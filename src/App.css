@@ -2,12 +2,15 @@
   --brand-primary: rgb(34, 35, 68);
   --brand-secondary: rgb(233, 18, 7);
   --brand-tertiary: rgb(255, 205, 5);
+  --brand-quaternary: rgb(61, 102, 176);
   --body-gray: rgb(102, 102, 102);
   --white: #fff;
 
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
+
+  --transition-duration: 0.3s;
 }
 
 * {
@@ -25,7 +28,7 @@ h4,
 h5,
 h6 {
   color: var(--brand-primary);
-  font-family: "Montserrat", serif;
+  font-family: 'Montserrat', serif;
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
@@ -35,7 +38,7 @@ p,
 span,
 body {
   color: var(--body-gray);
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Helvetica', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
@@ -100,8 +103,8 @@ button {
   cursor: pointer;
   padding: var(--space-sm) var(--space-md);
   transition:
-    background-color 0.3s,
-    color 0.3s;
+    background-color var(--transition-duration),
+    color var(--transition-duration);
 }
 
 button:hover {
@@ -140,6 +143,13 @@ button[data-secondary]:hover {
   gap: var(--space-md);
 }
 
+.mortgage-products-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
 .mortgage-products {
   display: flex;
   flex-direction: column;
@@ -161,7 +171,7 @@ button[data-secondary]:hover {
   flex-direction: column;
   gap: var(--space-md);
   padding: var(--space-md);
-  transition: transform 0.2s;
+  transition: transform var(--transition-duration);
 }
 
 .mortgage-product:hover {
@@ -185,4 +195,36 @@ button[data-secondary]:hover {
   background-color: rgba(var(--color), 0.6);
   border-radius: 4px;
   padding: var(--space-sm);
+}
+
+.header {
+  align-items: center;
+  border-bottom: 2px solid var(--brand-primary);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  gap: var(--space-md);
+}
+
+.nav a {
+  color: var(--brand-primary);
+  text-decoration-color: transparent;
+  transition:
+    color var(--transition-duration),
+    text-decoration-color var(--transition-duration);
+}
+
+.nav a:hover {
+  color: var(--brand-quaternary);
+  text-decoration-color: var(--brand-quaternary);
+}
+
+.nav a.active {
+  text-decoration-color: var(--brand-primary);
 }

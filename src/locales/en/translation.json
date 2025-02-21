@@ -19,5 +19,7 @@
   "date_asc": "Date updated, ascending",
   "date_desc": "Date updated, descending",
   "best_rate_asc": "Best Rate, ascending",
-  "best_rate_desc": "Best Rate, descending"
+  "best_rate_desc": "Best Rate, descending",
+  "products": "Products",
+  "applications": "Applications"
 }

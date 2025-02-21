@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './App.css';
-import LanguageToggle from './components/LanguageToggle';
 import { MortgageProductList } from './components/MortgageProductList';
 import './i18n.ts';
 import { Product } from './types';
@@ -42,33 +41,26 @@ function App() {
 
   return (
     <div>
-      <header>
-        Nesto <LanguageToggle />
-      </header>
-      <main>
-        <div>
-          {variableMortgages.length > 0 || fixedMortgages.length > 0 ? (
-            <div className="mortgage-products">
-              {variableMortgages.length > 0 && (
-                <MortgageProductList
-                  mortgages={variableMortgages}
-                  title={t('variable_mortgages')}
-                />
-              )}
-              {fixedMortgages.length > 0 && (
-                <MortgageProductList
-                  mortgages={fixedMortgages}
-                  title={t('fixed_mortgages')}
-                />
-              )}
-            </div>
-          ) : error ? (
-            <p>{t('error')}</p>
-          ) : (
-            <p>{t('no_mortgages_found')}</p>
+      {variableMortgages.length > 0 || fixedMortgages.length > 0 ? (
+        <div className="mortgage-products">
+          {variableMortgages.length > 0 && (
+            <MortgageProductList
+              mortgages={variableMortgages}
+              title={t('variable_mortgages')}
+            />
+          )}
+          {fixedMortgages.length > 0 && (
+            <MortgageProductList
+              mortgages={fixedMortgages}
+              title={t('fixed_mortgages')}
+            />
           )}
         </div>
-      </main>
+      ) : error ? (
+        <p>{t('error')}</p>
+      ) : (
+        <p>{t('no_mortgages_found')}</p>
+      )}
     </div>
   );
 }

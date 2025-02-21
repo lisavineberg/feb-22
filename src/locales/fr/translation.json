@@ -19,5 +19,7 @@
   "date_asc": "Date mise à jour, croissante",
   "date_desc": "Date mise à jour, décroissante",
   "best_rate_asc": "Meilleur taux, croissant",
-  "best_rate_desc": "Meilleur taux, décroissant"
+  "best_rate_desc": "Meilleur taux, décroissant",
+  "products": "Produits",
+  "applications": "Applications"
 }

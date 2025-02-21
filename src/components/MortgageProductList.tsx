@@ -40,10 +40,10 @@ export function MortgageProductList({
   };
 
   return (
-    <section>
+    <section className="mortgage-products-list">
       <h2>{title}</h2>
       {mortgages.length > 1 && (
-        <div>
+        <div className="flex flex-col gap-sm">
           <label htmlFor={`data-sort-${title}`}>{t('sort_by')}</label>
           <select
             id={`data-sort-${title}`}

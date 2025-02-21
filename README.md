@@ -23,7 +23,27 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 - mortgage application form
 - tests
-- sorting/filtering mortgage products
+- sorting/filtering mortgage
+
+```
+import { useNavigate } from "react-router";
+
+export function LoginPage() {
+  let navigate = useNavigate();
+
+  return (
+    <>
+      <MyHeader />
+      <MyLoginForm
+        onSuccess={() => {
+          navigate("/dashboard");
+        }}
+      />
+      <MyFooter />
+    </>
+  );
+}
+```
 
 ### DONE
 
