@@ -123,6 +123,17 @@ button[data-secondary]:hover {
   color: white;
 }
 
+dialog[open] {
+  align-items: start;
+  border: 2px solid var(--brand-primary);
+  border-radius: 4px;
+  min-height: 50vh;
+  min-width: 50vw;
+  max-width: calc(100vw - calc(var(--space-lg) * 2));
+  padding: var(--space-lg);
+  width: auto;
+}
+
 .flex {
   display: flex;
 }
@@ -166,7 +177,6 @@ button[data-secondary]:hover {
   align-items: start;
   border: 2px solid var(--brand-primary);
   border-radius: 4px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -227,4 +237,26 @@ button[data-secondary]:hover {
 
 .nav a.active {
   text-decoration-color: var(--brand-primary);
+}
+
+.dialog-close {
+  background: transparent;
+  border: 2px solid transparent;
+  color: var(--brand-primary);
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.dialog-close:hover {
+  background-color: transparent;
+  border: 2px solid var(--brand-quaternary);
+  color: var(--brand-quaternary);
+}
+
+.dialog-content {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }

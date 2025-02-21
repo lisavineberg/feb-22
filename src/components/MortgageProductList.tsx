@@ -5,9 +5,11 @@ import { Product } from '../types';
 export function MortgageProductList({
   mortgages,
   title,
+  setSelectedMortage,
 }: {
   mortgages: Product[];
   title: string;
+  setSelectedMortage: Function;
 }) {
   const { t } = useTranslation();
   const [sortedMortgages, setSortedMortgages] = useState(mortgages);
@@ -37,6 +39,17 @@ export function MortgageProductList({
       sortedData = sortedData.reverse();
     }
     setSortedMortgages([...sortedData]);
+  };
+
+  const handleOpenApplicationDialog = (mortgage: Product) => {
+    const dialog = document.getElementById(
+      'create-application',
+    ) as HTMLDialogElement;
+    if (dialog) {
+      dialog.showModal();
+      console.log(mortgage);
+      setSelectedMortage(mortgage);
+    }
   };
 
   return (
@@ -89,7 +102,9 @@ export function MortgageProductList({
                 <span className="tag tag--red">{t('heloc_not_allowed')}</span>
               )}
             </div>
-            <button>{t('apply')}</button>
+            <button onClick={() => handleOpenApplicationDialog(mortgage)}>
+              {t('apply')}
+            </button>
           </li>
         ))}
       </ul>

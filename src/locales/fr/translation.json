@@ -21,5 +21,8 @@
   "best_rate_asc": "Meilleur taux, croissant",
   "best_rate_desc": "Meilleur taux, décroissant",
   "products": "Produits",
-  "applications": "Applications"
+  "applications": "Applications",
+  "no_applications_found": "Aucune application trouvée",
+  "close": "Fermer",
+  "your_application_for": "Votre demande pour"
 }

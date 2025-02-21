@@ -21,5 +21,8 @@
   "best_rate_asc": "Best Rate, ascending",
   "best_rate_desc": "Best Rate, descending",
   "products": "Products",
-  "applications": "Applications"
+  "applications": "Applications",
+  "no_applications_found": "No applications found",
+  "close": "Close",
+  "your_application_for": "Your application for"
 }

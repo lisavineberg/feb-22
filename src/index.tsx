@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import App from './App';
-import { Applications } from './components/Applications';
+import './App.css';
+import { ApplicationsList } from './components/ApplicationsList';
 import { Layout } from './components/Layout';
+import './i18n.ts';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -16,7 +18,7 @@ root.render(
       <Layout>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/applications" element={<Applications />} />
+          <Route path="/applications" element={<ApplicationsList />} />
         </Routes>
       </Layout>
     </BrowserRouter>
