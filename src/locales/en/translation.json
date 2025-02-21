@@ -1,0 +1,23 @@
+{
+  "variable_mortgages": "Variable Mortgages",
+  "fixed_mortgages": "Fixed Mortgages",
+  "error": "An error occured",
+  "no_mortgages_found": "No mortgages found",
+  "rate": "Rate",
+  "best_rate": "Best Rate",
+  "insurable": "Insurable",
+  "no_restrictions": "No Restrictions",
+  "some_restrictions": "Some Restrictions",
+  "more_restrictions": "More Restrictions",
+  "heloc_allowed": "HELOC Allowed",
+  "heloc_not_allowed": "HELOC Not Allowed",
+  "apply": "Apply",
+  "english": "English",
+  "french": "French",
+  "sort_by": "Sort By",
+  "default": "Default",
+  "date_asc": "Date updated, ascending",
+  "date_desc": "Date updated, descending",
+  "best_rate_asc": "Best Rate, ascending",
+  "best_rate_desc": "Best Rate, descending"
+}

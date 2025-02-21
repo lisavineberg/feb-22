@@ -1,0 +1,23 @@
+{
+  "variable_mortgages": "Hypothèques variables",
+  "fixed_mortgages": "Hypothèques fixes",
+  "error": "Une erreur s'est produite",
+  "no_mortgages_found": "Aucune hypothèque trouvée",
+  "rate": "Taux",
+  "best_rate": "Meilleur taux",
+  "insurable": "Assurable",
+  "no_restrictions": "Aucune restriction",
+  "some_restrictions": "Quelques restrictions",
+  "more_restrictions": "Plus de restrictions",
+  "heloc_allowed": "HELOC autorisé",
+  "heloc_not_allowed": "HELOC non autorisé",
+  "apply": "Appliquer",
+  "english": "Anglais",
+  "french": "Français",
+  "sort_by": "Trier par",
+  "default": "Défaut",
+  "date_asc": "Date mise à jour, croissante",
+  "date_desc": "Date mise à jour, décroissante",
+  "best_rate_asc": "Meilleur taux, croissant",
+  "best_rate_desc": "Meilleur taux, décroissant"
+}
