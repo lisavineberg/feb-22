@@ -21,7 +21,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### TODO
 
-- mortgage application form
 - tests
 - filtering mortgage products
 - loading state
@@ -31,6 +30,10 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### DONE
 
 - displaying mortgage products
+- sorting mortgage products
+- able to create an application
+- able to view list of applications
+- able to edit application
 - prettier/linting/tidied CreateReactApp files
 - localized
 

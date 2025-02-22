@@ -1,12 +1,26 @@
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DEFAULT_HEADERS } from '../consts';
 import { Application } from '../types';
+import { closeDialog } from '../utils';
+import { ApplicationsContext } from './ApplicationsList';
 
 export function ApplicationForm({ application }: { application: Application }) {
+  const { t } = useTranslation();
+  const context = useContext(ApplicationsContext);
+
+  if (!context) {
+    throw new Error(
+      'ApplicationForm must be used within an ApplicationsProvider',
+    );
+  }
+
+  const { applications, setApplications } = context;
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
 
     const body = { ...application, applicants: [data] };
 
@@ -19,10 +33,20 @@ export function ApplicationForm({ application }: { application: Application }) {
       },
     )
       .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        const currentApplicationIndex = applications.findIndex(
+          (app: Application) => app.id === application.id,
+        );
+        const updatedApplications = [...applications];
+        updatedApplications[currentApplicationIndex] = data;
+        setApplications(updatedApplications);
+
+        closeDialog(`edit-application--${application.id}`);
       })
       .catch(() => {
         console.log('error');
@@ -32,7 +56,7 @@ export function ApplicationForm({ application }: { application: Application }) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-sm">
       <label className="flex gap-sm">
-        First name:
+        {t('first_name')}:
         <input
           type="text"
           name="firstName"
@@ -40,7 +64,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         />
       </label>
       <label className="flex gap-sm">
-        Last name:
+        {t('last_name')}:
         <input
           type="text"
           name="lastName"
@@ -48,7 +72,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         />
       </label>
       <label className="flex gap-sm">
-        Email:
+        {t('email')}:
         <input
           type="email"
           name="email"
@@ -56,14 +80,14 @@ export function ApplicationForm({ application }: { application: Application }) {
         />
       </label>
       <label className="flex gap-sm">
-        Phone:
+        {t('phone')}:
         <input
           type="tel"
           name="phone"
           defaultValue={application.applicants[0].phone ?? undefined}
         />
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit">{t('submit')}</button>
     </form>
   );
 }

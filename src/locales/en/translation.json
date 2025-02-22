@@ -24,5 +24,15 @@
   "applications": "Applications",
   "no_applications_found": "No applications found",
   "close": "Close",
-  "your_application_for": "Your application for"
+  "your_application_for": "Your application for",
+  "primary_applicant": "Primary Applicant",
+  "edit": "Edit",
+  "product_id": "Product ID",
+  "application": "Application",
+  "application_incomplete": "Application Incomplete",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "email": "Email",
+  "phone": "Phone",
+  "submit": "Submit"
 }

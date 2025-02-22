@@ -24,5 +24,15 @@
   "applications": "Applications",
   "no_applications_found": "Aucune application trouvée",
   "close": "Fermer",
-  "your_application_for": "Votre demande pour"
+  "your_application_for": "Votre demande pour",
+  "primary_applicant": "Demandeur principal",
+  "edit": "Modifier",
+  "product_id": "ID du produit",
+  "application": "Application",
+  "application_incomplete": "Application incomplète",
+  "first_name": "Prénom",
+  "last_name": "Nom de famille",
+  "email": "Courriel",
+  "phone": "Téléphone",
+  "submit": "Soumettre"
 }

@@ -1,13 +1,21 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_HEADERS } from '../consts';
 import { Application } from '../types';
-import { handleOpenDialog } from '../utils';
-import { EditApplication } from './EditApplication';
+import { ApplicationTile } from './ApplicationTile';
+
+interface ApplicationsContextType {
+  applications: Application[];
+  setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
+}
+
+export const ApplicationsContext = createContext<
+  ApplicationsContextType | undefined
+>(undefined);
 
 export function ApplicationsList() {
   const { t } = useTranslation();
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications] = useState<Application[]>([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -25,41 +33,20 @@ export function ApplicationsList() {
       });
   }, []);
 
-  // const isApplicationValid = (applicant: Applicant) => {
-  //   return (
-  //     applicant.firstName.length > 0 &&
-  //     applicant.lastName.length > 0 &&
-  //     applicant.email.length > 0 &&
-  //     applicant.phone.length > 0
-  //   );
-  // };
-
   console.log('applications', applications);
   return (
-    <div>
+    <ApplicationsContext.Provider value={{ applications, setApplications }}>
       {applications.length > 0 ? (
-        <div>
+        <ul className="flex flex-col gap-md">
           {applications.map((application: Application) => (
-            <div key={application.id}>
-              <p>
-                {t('application')} {application.id}
-              </p>
-              <p>
-                {t('product_id')}: {application.productId}
-              </p>
-              <p>application name? {application.applicants[0].firstName} </p>
-              <button onClick={() => handleOpenDialog('edit-application')}>
-                edit
-              </button>
-              <EditApplication application={application} />
-            </div>
+            <ApplicationTile key={application.id} application={application} />
           ))}
-        </div>
+        </ul>
       ) : error ? (
         <p>{t('error')}</p>
       ) : (
         <p>{t('no_applications_found')}</p>
       )}
-    </div>
+    </ApplicationsContext.Provider>
   );
 }

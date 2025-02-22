@@ -8,10 +8,10 @@ export function EditApplication({ application }: { application: Application }) {
   const { t } = useTranslation();
 
   return (
-    <dialog id="edit-application">
+    <dialog id={`edit-application--${application.id}`}>
       <button
         className="dialog-close"
-        onClick={() => closeDialog('edit-application')}
+        onClick={() => closeDialog(`edit-application--${application.id}`)}
         aria-label={t('close')}>
         <CloseIcon />
       </button>
