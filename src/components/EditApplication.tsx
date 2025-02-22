@@ -1,32 +1,27 @@
 import { useTranslation } from 'react-i18next';
-import { Product } from '../types';
+import { Application } from '../types';
 import { closeDialog } from '../utils';
 import { ApplicationForm } from './ApplicationForm';
 import { CloseIcon } from './CloseIcon';
 
-export function CreateApplication({
-  selectedMortgage,
-}: {
-  selectedMortgage: Product | null;
-}) {
+export function EditApplication({ application }: { application: Application }) {
   const { t } = useTranslation();
-  console.log('selectedMortgage', selectedMortgage);
 
   return (
-    <dialog id="create-application">
+    <dialog id="edit-application">
       <button
         className="dialog-close"
-        onClick={() => closeDialog('create-application')}
+        onClick={() => closeDialog('edit-application')}
         aria-label={t('close')}>
         <CloseIcon />
       </button>
       <div className="dialog-content">
-        {selectedMortgage ? (
+        {application.applicants ? (
           <>
             <h2 className="h3">
-              {t('your_application_for')}: {selectedMortgage.name}
+              {t('your_application_for')}: {application.applicants[0].firstName}
             </h2>
-            <ApplicationForm />
+            <ApplicationForm application={application} />
           </>
         ) : (
           <h2>{t('error')}</h2>

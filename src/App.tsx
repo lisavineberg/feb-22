@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CreateApplication } from './components/CreateApplication';
 import { MortgageProductList } from './components/MortgageProductList';
 import { DEFAULT_HEADERS } from './consts';
 import { Product } from './types';
@@ -8,7 +7,6 @@ import { Product } from './types';
 function App() {
   const { t } = useTranslation();
 
-  const [selectedMortage, setSelectedMortage] = useState<Product | null>(null);
   const [variableMortgages, setVariableMortgages] = useState([]);
   const [fixedMortgages, setFixedMortgages] = useState([]);
   const [error, setError] = useState(false);
@@ -42,17 +40,14 @@ function App() {
             <MortgageProductList
               mortgages={variableMortgages}
               title={t('variable_mortgages')}
-              setSelectedMortage={setSelectedMortage}
             />
           )}
           {fixedMortgages.length > 0 && (
             <MortgageProductList
               mortgages={fixedMortgages}
               title={t('fixed_mortgages')}
-              setSelectedMortage={setSelectedMortage}
             />
           )}
-          <CreateApplication selectedMortgage={selectedMortage} />
         </div>
       ) : error ? (
         <p>{t('error')}</p>

@@ -26,26 +26,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - filtering mortgage products
 - loading state
 - rename App.tsx, sounds like application
-
-```
-import { useNavigate } from "react-router";
-
-export function LoginPage() {
-  let navigate = useNavigate();
-
-  return (
-    <>
-      <MyHeader />
-      <MyLoginForm
-        onSuccess={() => {
-          navigate("/dashboard");
-        }}
-      />
-      <MyFooter />
-    </>
-  );
-}
-```
+- deploy
 
 ### DONE
 

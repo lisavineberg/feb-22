@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
+import { DEFAULT_HEADERS } from '../consts';
 import { Product } from '../types';
 
 export function MortgageProductList({
   mortgages,
   title,
-  setSelectedMortage,
 }: {
   mortgages: Product[];
   title: string;
-  setSelectedMortage: Function;
 }) {
   const { t } = useTranslation();
   const [sortedMortgages, setSortedMortgages] = useState(mortgages);
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
 
   const calculateSortedData = (sort: string) => {
     switch (sort) {
@@ -41,15 +43,21 @@ export function MortgageProductList({
     setSortedMortgages([...sortedData]);
   };
 
-  const handleOpenApplicationDialog = (mortgage: Product) => {
-    const dialog = document.getElementById(
-      'create-application',
-    ) as HTMLDialogElement;
-    if (dialog) {
-      dialog.showModal();
-      console.log(mortgage);
-      setSelectedMortage(mortgage);
-    }
+  const handleStartApplication = (mortgageId: number) => {
+    fetch('https://nesto-fe-exam.vercel.app/api/applications', {
+      method: 'POST',
+      headers: DEFAULT_HEADERS,
+      body: JSON.stringify({ productId: mortgageId }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error');
+        }
+        navigate('/applications');
+      })
+      .catch(() => {
+        setError(true);
+      });
   };
 
   return (
@@ -102,9 +110,10 @@ export function MortgageProductList({
                 <span className="tag tag--red">{t('heloc_not_allowed')}</span>
               )}
             </div>
-            <button onClick={() => handleOpenApplicationDialog(mortgage)}>
+            <button onClick={() => handleStartApplication(mortgage.id)}>
               {t('apply')}
             </button>
+            {error && <p>{t('error')}</p>}
           </li>
         ))}
       </ul>
