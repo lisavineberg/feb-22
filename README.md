@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can run locally using `npm start`, or visit the site at `https://lisasmortgageapp.netlify.app/`.
 
 ## Available Scripts
 
@@ -24,8 +25,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - tests
 - filtering mortgage products
 - loading state
-- rename App.tsx, sounds like application
-- deploy
 
 ### DONE
 
@@ -36,6 +35,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - able to edit application
 - prettier/linting/tidied CreateReactApp files
 - localized
+- deployed
 
 ### QUESTIONS
 
