@@ -15,21 +15,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### TODO
-
-- tests
-- filtering mortgage products
-- loading state
-
 ### DONE
 
 - displaying mortgage products
-- sorting mortgage products
+- use zod to validate which mortgage products are valid
 - able to create an application
 - able to view list of applications
 - able to edit application
@@ -45,4 +34,5 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 - french translations are just whatever Google suggested
 - would spend more time structuring CSS (either modules, tailwind, styled components, etc)
+- I had come up with a decent sorting function for the mortgage products before I implemented zod and realized that there was only one valid product for each, and so sorting isn't really necessary :/
 - I randomly picked what "tags" to feature on a mortgage product card, as well as the sorting options ¯\_(ツ)\_/¯

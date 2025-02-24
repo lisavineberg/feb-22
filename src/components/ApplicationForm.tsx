@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_HEADERS } from '../consts';
+import { ApplicantSchema } from '../schemas';
 import { Application } from '../types';
 import { closeDialog } from '../utils';
 import { ApplicationsContext } from './ApplicationsList';
@@ -39,6 +40,13 @@ export function ApplicationForm({ application }: { application: Application }) {
         return response.json();
       })
       .then((data) => {
+        const result = ApplicantSchema.safeParse(data);
+
+        if (!result.success) {
+          console.error(result.error);
+          return;
+        }
+
         const currentApplicationIndex = applications.findIndex(
           (app: Application) => app.id === application.id,
         );
@@ -49,7 +57,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         closeDialog(`edit-application--${application.id}`);
       })
       .catch(() => {
-        console.log('error');
+        console.error('Error updating application');
       });
   }
 
@@ -60,7 +68,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         <input
           type="text"
           name="firstName"
-          defaultValue={application.applicants[0].firstName ?? undefined}
+          defaultValue={application.applicants[0].firstName ?? ''}
         />
       </label>
       <label className="flex gap-sm">
@@ -68,7 +76,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         <input
           type="text"
           name="lastName"
-          defaultValue={application.applicants[0].lastName ?? undefined}
+          defaultValue={application.applicants[0].lastName ?? ''}
         />
       </label>
       <label className="flex gap-sm">
@@ -76,7 +84,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         <input
           type="email"
           name="email"
-          defaultValue={application.applicants[0].email ?? undefined}
+          defaultValue={application.applicants[0].email ?? ''}
         />
       </label>
       <label className="flex gap-sm">
@@ -84,7 +92,7 @@ export function ApplicationForm({ application }: { application: Application }) {
         <input
           type="tel"
           name="phone"
-          defaultValue={application.applicants[0].phone ?? undefined}
+          defaultValue={application.applicants[0].phone ?? ''}
         />
       </label>
       <button type="submit">{t('submit')}</button>

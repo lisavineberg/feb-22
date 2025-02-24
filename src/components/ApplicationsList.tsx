@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_HEADERS } from '../consts';
+import { ApplicationsSchema } from '../schemas';
 import { Application } from '../types';
 import { ApplicationTile } from './ApplicationTile';
 
@@ -26,6 +27,12 @@ export function ApplicationsList() {
         return response.json();
       })
       .then((data) => {
+        const result = ApplicationsSchema.safeParse(data);
+
+        if (!result.success) {
+          console.error(result.error);
+          return;
+        }
         setApplications(data);
       })
       .catch(() => {
@@ -33,7 +40,6 @@ export function ApplicationsList() {
       });
   }, []);
 
-  console.log('applications', applications);
   return (
     <ApplicationsContext.Provider value={{ applications, setApplications }}>
       {applications.length > 0 ? (

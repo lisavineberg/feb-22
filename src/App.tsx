@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MortgageProductList } from './components/MortgageProductList';
 import { DEFAULT_HEADERS } from './consts';
+import { ProductSchema } from './schemas';
 import { Product } from './types';
 
 function App() {
   const { t } = useTranslation();
 
-  const [variableMortgages, setVariableMortgages] = useState([]);
-  const [fixedMortgages, setFixedMortgages] = useState([]);
+  const [variableMortgages, setVariableMortgages] = useState<Product[]>([]);
+  const [fixedMortgages, setFixedMortgages] = useState<Product[]>([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -19,13 +20,25 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        setVariableMortgages(
-          data.filter((mortgage: Product) => mortgage.type === 'VARIABLE'),
-        );
-        setFixedMortgages(
-          data.filter((mortgage: Product) => mortgage.type === 'FIXED'),
-        );
+        const variableSet = new Set<Product>();
+        const fixedSet = new Set<Product>();
+
+        data.forEach((product: Product) => {
+          const result = ProductSchema.safeParse(product);
+
+          if (result.success) {
+            if (product.type === 'VARIABLE') {
+              variableSet.add(product);
+            } else if (product.type === 'FIXED') {
+              fixedSet.add(product);
+            }
+          } else {
+            console.error(result.error);
+          }
+        });
+
+        setVariableMortgages(Array.from(variableSet));
+        setFixedMortgages(Array.from(fixedSet));
       })
       .catch(() => {
         setError(true);
