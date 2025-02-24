@@ -40,6 +40,8 @@ export function ApplicationForm({ application }: { application: Application }) {
         return response.json();
       })
       .then((data) => {
+        console.log('data', data);
+
         const result = ApplicantSchema.safeParse(data);
 
         if (!result.success) {

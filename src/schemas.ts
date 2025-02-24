@@ -44,10 +44,10 @@ export const ProductSchema = z.object({
 });
 
 export const ApplicantSchema = z.object({
-  phone: z.string(),
-  email: z.string(),
-  firstName: z.string(),
-  lastName: z.string(),
+  phone: z.string().nullish(),
+  email: z.string().nullish(),
+  firstName: z.string().nullish(),
+  lastName: z.string().nullish(),
 });
 
 export const ApplicationSchema = z.object({
