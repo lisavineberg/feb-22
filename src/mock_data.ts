@@ -1,4 +1,4 @@
-export const mockMortgageProdut = {
+export const mockMortgageProduct = {
   bestRate: 1.25,
   created: '2021-06-07T13:30:38Z',
   family: 'VALUE_FLEX',

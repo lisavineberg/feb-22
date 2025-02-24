@@ -35,7 +35,7 @@ function App() {
   return (
     <div>
       {variableMortgages.length > 0 || fixedMortgages.length > 0 ? (
-        <div className="mortgage-products">
+        <div className="mortgage-products" data-testid="mortgage-products">
           {variableMortgages.length > 0 && (
             <MortgageProductList
               mortgages={variableMortgages}
